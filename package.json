@@ -1,0 +1,67 @@
+{
+  "name": "nuller",
+  "version": "0.0.1",
+  "description":
+    "nuller is a small and simple library for providing default values for null or undefined object property access",
+  "license": "MIT",
+  "repository": "mrFunkyWisdom/nuller",
+  "main": "dist/index.js",
+  "author": {
+    "name": "Ensar Bavrk",
+    "email": "ensar@bavrk.com",
+    "url": "https://github.com/mrFunkyWisdom"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "test": "jest",
+    "coverage": "npm test -- --coverage",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "lint": "eslint src test",
+    "lint-fix": "eslint --fix src test",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "babel src -d dist",
+    "watch": "npm-watch",
+    "patch": "npm version patch && npm publish",
+    "minor": "npm version minor && npm publish",
+    "major": "npm version major && npm publish",
+    "prepublishOnly": "npm run lint && npm test && npm run build",
+    "postpublish": "git push origin master --follow-tags"
+  },
+  "watch": {
+    "test": "{src,test}/*.js",
+    "lint": "{src,test}/*.js",
+    "build": "src"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "keywords": [
+    "null object",
+    "default values",
+    "undefined access",
+    "undefined",
+    "undefined value",
+    "nuller",
+    "null value"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jest": "^21.15.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "jest-cli": "^22.4.3",
+    "npm-watch": "^0.3.0",
+    "opn-cli": "^3.1.0",
+    "prettier": "^1.11.1",
+    "rimraf": "^2.6.2"
+  }
+}
