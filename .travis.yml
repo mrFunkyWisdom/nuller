@@ -1,0 +1,12 @@
+language: node_js
+branches:
+  only: 
+    - master
+node_js:
+  - v8
+script:
+  - npm run lint && npm test -- --coverage
+cache:
+  - yarn
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
