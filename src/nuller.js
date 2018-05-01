@@ -1,20 +1,28 @@
 /**
+ * setup handler function is used to set up a handler object for a proxy wrapper
  *
  * @param {Object} targetObject
- * @param {Object} scheme
+ * @param {Object} fallBackScheme
  */
-const setupHandler = (targetObject, scheme) => ({
-  get(target, prop) {
-    return target[prop] ? target[prop] : scheme[prop];
-  }
-});
+const setupHandler = fallBackScheme => {
+  const handler = {
+    get(target, prop) {
+      let value = target[prop] ? target[prop] : fallBackScheme[prop];
+      if (typeof value === 'function' || typeof value === 'object') {
+        value = new Proxy(value, setupHandler(fallBackScheme[prop]));
+      }
+      return value;
+    }
+  };
+  return handler;
+};
 
 /**
- * Project setup, enough code to pass the first test
+ * function nuller
  *
  * @param {Object} object
  * @param {Object} defaultScheme
  */
-const nuller = (obj, scheme) => new Proxy(obj, setupHandler(obj, scheme));
+const nuller = (obj, scheme) => new Proxy(obj, setupHandler(scheme));
 
 export { nuller as default };
