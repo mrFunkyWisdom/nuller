@@ -1,7 +1,6 @@
 # nuller
 
 Nuller is a small and simple library for providing default values for null or undefined object property access
-more-description : TO:DO
 
 <hr />
 
@@ -10,36 +9,59 @@ more-description : TO:DO
 
 ## Usage
 
-Basic usage
+nuller function can take parameters partially, first by providing the fallback object, and later to provide a real object.
 
 ```javascript
 import nuller from 'nuller';
 
-const user = {
+const withFallback = nuller({
   name: 'John',
-  lastName: 'Galt'
+  lastName: 'Galt',
+  location: 'unknown'
+});
+
+const originalObject = {
+  name: 'John',
+  location: null
 };
 
-const fallBackScheme = {
-  name: 'Hank',
-  age: 49
-};
-
-const userWithDefaults = nuller(user, fallBackScheme);
+const object = withFallback(originalObject);
 
 console.log(
-  `The user ${userWithDefaults} is ${userWithDefaults.age} years old`
+  `User ${object.name} ${object.lastName} lives in ${object.location} location`
 );
-// The user John is 49 years old
+//  User John Galt lives in unknown location
 ```
 
-TO:DO
+```javascript
+import nuller from 'nuller';
 
-## Install
+const fallbackObject = {
+  name: 'John',
+  lastName: 'Galt',
+  location: 'unknown'
+};
 
-TO:DO
+const originalObject = {
+  name: 'John',
+  location: null
+};
 
-## API
+const object = nuller(originalObject, fallbackObject);
+
+console.log(
+  `User ${object.name} ${object.lastName} lives in ${object.location} location`
+);
+//  User John Galt lives in unknown location
+```
+
+## Installation
+
+This module is distributed via `npm` and should be installed as your project's "dependencies"
+
+```
+npm install --save nuller
+```
 
 ## License
 
