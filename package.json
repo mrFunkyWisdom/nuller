@@ -1,8 +1,7 @@
 {
   "name": "nuller",
-  "version": "0.0.1",
-  "description":
-    "nuller is a small and simple library for providing default values for null or undefined object property access",
+  "version": "0.0.2",
+  "description": "nuller is a small and simple library for providing default values for null or undefined object property access",
   "license": "MIT",
   "repository": "mrFunkyWisdom/nuller",
   "main": "dist/index.js",
@@ -11,7 +10,9 @@
     "email": "ensar@bavrk.com",
     "url": "https://github.com/mrFunkyWisdom"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "jest",
     "coverage": "npm test -- --coverage",
