@@ -52,7 +52,7 @@ const originalObject = {
   location: null
 };
 
-const object = nuller(originalObject, fallbackObject);
+const object = nuller(fallbackObject, originalObject);
 
 console.log(
   `User ${object.name} ${object.lastName} lives in ${object.location} location`
